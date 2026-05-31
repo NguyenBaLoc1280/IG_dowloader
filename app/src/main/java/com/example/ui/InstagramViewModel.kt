@@ -125,6 +125,18 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
         sharedPrefs.edit().putBoolean("is_hq_enhance_enabled", enabled).apply()
     }
 
+    private val followDao = database.followDao()
+
+    val followedAccounts: StateFlow<List<FollowedAccount>> = followDao.getAllFollowed()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
+
+    private val _isCurrentProfileFollowed = MutableStateFlow(false)
+    val isCurrentProfileFollowed: StateFlow<Boolean> = _isCurrentProfileFollowed.asStateFlow()
+
     // History of Downloads from database Flow
     val downloadHistory: StateFlow<List<DownloadRecord>> = dao.getAllDownloads()
         .stateIn(
@@ -248,6 +260,7 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
                 _postsList.value = result.posts
                 _postsEndCursor.value = result.endCursor
                 _postsHasNext.value = result.hasNextPage
+                checkIsFollowing(result.profile.username)
 
                 // Automatically try fetching stories if profile loaded
                 fetchStoriesForUser(result.profile.id)
@@ -647,6 +660,33 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
     fun deleteDownload(recordId: Int) {
         viewModelScope.launch {
             dao.deleteDownloadById(recordId)
+        }
+    }
+
+    fun checkIsFollowing(username: String) {
+        viewModelScope.launch {
+            _isCurrentProfileFollowed.value = followDao.isFollowing(username)
+        }
+    }
+
+    fun toggleFollowProfile(profile: IgProfile) {
+        viewModelScope.launch {
+            val isFollowing = followDao.isFollowing(profile.username)
+            if (isFollowing) {
+                followDao.deleteFollowByUsername(profile.username)
+                _isCurrentProfileFollowed.value = false
+                _downloadStatusMessage.value = if (_appLanguage.value == AppLanguage.VI) "Đã xóa khỏi danh sách đánh dấu" else "Removed from bookmark list"
+            } else {
+                val followed = FollowedAccount(
+                    username = profile.username,
+                    fullName = profile.fullName,
+                    profilePicUrl = profile.profilePicUrl,
+                    followedAt = System.currentTimeMillis()
+                )
+                followDao.insertFollow(followed)
+                _isCurrentProfileFollowed.value = true
+                _downloadStatusMessage.value = if (_appLanguage.value == AppLanguage.VI) "Đã lưu @${profile.username} để tìm kiếm nhanh!" else "Saved @${profile.username} for quick search!"
+            }
         }
     }
 

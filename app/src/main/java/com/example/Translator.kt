@@ -40,7 +40,15 @@ object Translator {
             "selected_lbl" to "%d selected",
             "downloading" to "Downloading...",
             "download_all" to "Download Selected",
-            "expand_btn" to "Show Profile"
+            "expand_btn" to "Show Profile",
+            "tab_tracking" to "Saved",
+            "btn_follow" to "Bookmark",
+            "btn_unfollow" to "Bookmarked",
+            "msg_monitoring_info" to "Logged-in sessions regularly scan for target updates on start, triggering status bar alerts on new posts! (Simulated scanning is active in guest mode)",
+            "no_notifications" to "No update alerts logged yet.",
+            "no_follows" to "You are not following any tracked profile yet.",
+            "btn_refresh_scans" to "Scan Updates",
+            "scanning_status" to "Scanning..."
         ),
         AppLanguage.JA to mapOf(
             "tab_posts" to "投稿",
@@ -78,7 +86,15 @@ object Translator {
             "selected_lbl" to "%d 件選択",
             "downloading" to "ダウンロード中...",
             "download_all" to "選択分を保存",
-            "expand_btn" to "プロファイル表示"
+            "expand_btn" to "プロファイル表示",
+            "tab_tracking" to "フォロー",
+            "btn_follow" to "自動検知・フォロー",
+            "btn_unfollow" to "フォロー中",
+            "msg_monitoring_info" to "ログインセッションは開始時に自動的に更新を検出し、新しい投稿がある場合はシステム通知を送信します（ゲストモードでもシミュレートされます）。",
+            "no_notifications" to "更新通知はまだありません。",
+            "no_follows" to "フォローしているユーザーがいません。",
+            "btn_refresh_scans" to "更新を確認",
+            "scanning_status" to "スキャン中..."
         ),
         AppLanguage.ZH to mapOf(
             "tab_posts" to "帖子",
@@ -116,7 +132,15 @@ object Translator {
             "selected_lbl" to "已选中 %d 项",
             "downloading" to "正在极速多线程保存...",
             "download_all" to "本地保存选中",
-            "expand_btn" to "展开资料"
+            "expand_btn" to "展开资料",
+            "tab_tracking" to "监视关注",
+            "btn_follow" to "开启更新监视",
+            "btn_unfollow" to "持续监视中",
+            "msg_monitoring_info" to "登录会话将在打开应用时自动扫频，遇新帖即刻弹窗通知栏提醒（访客模式自带模拟检测演示）",
+            "no_notifications" to "暂无新消息记录。",
+            "no_follows" to "您当前还未开启任何账号的更新追踪监督。",
+            "btn_refresh_scans" to "扫频检索",
+            "scanning_status" to "正在扫频..."
         ),
         AppLanguage.VI to mapOf(
             "tab_posts" to "Bài viết",
@@ -154,7 +178,15 @@ object Translator {
             "selected_lbl" to "Đã chọn %d mục",
             "downloading" to "Đang tải xuống...",
             "download_all" to "Tải xuống các mục đã chọn",
-            "expand_btn" to "Hiện profile"
+            "expand_btn" to "Hiện profile",
+            "tab_tracking" to "Đã lưu",
+            "btn_follow" to "Đánh dấu",
+            "btn_unfollow" to "Đã đánh dấu",
+            "msg_monitoring_info" to "Phiên đăng nhập sẽ tự động quét thông tin khi mở ứng dụng và gửi thông báo điện thoại nếu có bài viết mới! (Có giả lập ở chế độ khách)",
+            "no_notifications" to "Chưa có thông báo cập nhật nào được ghi nhận.",
+            "no_follows" to "Bạn chưa nhấn theo dõi tài khoản nào để nhận thông báo tự động.",
+            "btn_refresh_scans" to "Quét cập nhật",
+            "scanning_status" to "Đang quét..."
         ),
         AppLanguage.AR to mapOf(
             "tab_posts" to "منشورات",
@@ -192,7 +224,15 @@ object Translator {
             "selected_lbl" to "تم تحديد %d",
             "downloading" to "جاري التحميل...",
             "download_all" to "تنزيل المحدد",
-            "expand_btn" to "عرض الملف"
+            "expand_btn" to "عرض الملف",
+            "tab_tracking" to "المتابعة",
+            "btn_follow" to "تتبع التحديثات",
+            "btn_unfollow" to "قيد التتبع",
+            "msg_monitoring_info" to "سوف تقوم جلسات تسجيل الدخول بالمسح التلقائي على التحديثات وتنبيهك عند نشر منشورات جديدة (المسح المحاكي نشط للضيوف)",
+            "no_notifications" to "لا توجد تنبيهات جديدة بعد.",
+            "no_follows" to "أنت لا تتابع أي ملفات شخصية للتحديثات بعد.",
+            "btn_refresh_scans" to "فحص التحديثات",
+            "scanning_status" to "جاري الفحص..."
         )
     )
 

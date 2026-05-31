@@ -24,6 +24,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -280,7 +281,13 @@ fun InstagramDownloaderApp(
                         when (profileState) {
                             is UiState.Success -> {
                                 val profile = (profileState as UiState.Success<IgProfile>).data
-                                ProfileDetailCard(profile = profile, appLanguage = appLanguage)
+                                val isFollowing by viewModel.isCurrentProfileFollowed.collectAsStateWithLifecycle()
+                                ProfileDetailCard(
+                                    profile = profile,
+                                    isFollowing = isFollowing,
+                                    onFollowToggle = { viewModel.toggleFollowProfile(profile) },
+                                    appLanguage = appLanguage
+                                )
                             }
                             is UiState.Error -> {
                                 ErrorCard(
@@ -438,6 +445,18 @@ fun InstagramDownloaderApp(
                             )
                         }
                     )
+                    Tab(
+                        selected = activeTab == 4,
+                        onClick = { activeTab = 4 },
+                        text = {
+                            Text(
+                                text = Translator.get("tab_tracking", appLanguage),
+                                fontSize = 12.sp,
+                                fontWeight = if (activeTab == 4) FontWeight.Bold else FontWeight.Normal,
+                                color = if (activeTab == 4) Color.White else Color(0xFF71767B)
+                            )
+                        }
+                    )
                 }
 
                 // Tab-specific grids
@@ -531,12 +550,22 @@ fun InstagramDownloaderApp(
                                 appLanguage = appLanguage
                             )
                         }
+                        4 -> {
+                            TrackingTabContent(
+                                viewModel = viewModel,
+                                onSelectAccount = { username ->
+                                    viewModel.searchProfile(username)
+                                    activeTab = 0
+                                },
+                                appLanguage = appLanguage
+                            )
+                        }
                     }
                 }
             }
 
             // Action Floating Bar for Multi-select downloading (X themed black bar)
-            if (selectedItems.isNotEmpty() && activeTab != 3) {
+            if (selectedItems.isNotEmpty() && activeTab != 3 && activeTab != 4) {
                 val targetUser = (profileState as? UiState.Success)?.data?.username ?: searchQuery
                 MultiSelectActionBar(
                     selectedCount = selectedItems.size,
@@ -766,7 +795,12 @@ fun SearchCard(
 }
 
 @Composable
-fun ProfileDetailCard(profile: IgProfile, appLanguage: AppLanguage) {
+fun ProfileDetailCard(
+    profile: IgProfile,
+    isFollowing: Boolean,
+    onFollowToggle: () -> Unit,
+    appLanguage: AppLanguage
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -835,6 +869,33 @@ fun ProfileDetailCard(profile: IgProfile, appLanguage: AppLanguage) {
                             }
                         }
                     }
+                }
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Button(
+                    onClick = onFollowToggle,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (isFollowing) Color(0xFF2F3336) else Color.White,
+                        contentColor = if (isFollowing) Color.White else Color.Black
+                    ),
+                    border = if (isFollowing) BorderStroke(1.dp, Color(0xFF536471)) else null,
+                    shape = RoundedCornerShape(20.dp),
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                    modifier = Modifier
+                        .defaultMinSize(minHeight = 1.dp)
+                        .testTag("follow_toggle_btn")
+                ) {
+                    val label = if (isFollowing) {
+                        Translator.get("btn_unfollow", appLanguage)
+                    } else {
+                        Translator.get("btn_follow", appLanguage)
+                    }
+                    Text(
+                        text = label,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
                 }
             }
 
@@ -2004,4 +2065,166 @@ fun VideoPreviewPlayer(videoUrl: String) {
         },
         modifier = Modifier.fillMaxSize()
     )
+}
+
+@Composable
+fun TrackingTabContent(
+    viewModel: InstagramViewModel,
+    onSelectAccount: (String) -> Unit,
+    appLanguage: AppLanguage
+) {
+    val followed by viewModel.followedAccounts.collectAsStateWithLifecycle()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(12.dp)
+    ) {
+        Text(
+            text = if (appLanguage == AppLanguage.VI) "Tài khoản đã đánh dấu (${followed.size})" else "Bookmarks (${followed.size})",
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            modifier = Modifier.padding(bottom = 12.dp)
+        )
+
+        if (followed.isEmpty()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 48.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(
+                        imageVector = Icons.Default.Group,
+                        contentDescription = null,
+                        tint = Color(0xFF71767B).copy(alpha = 0.5f),
+                        modifier = Modifier.size(48.dp)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = if (appLanguage == AppLanguage.VI) 
+                            "Chưa đánh dấu tài khoản nào.\nNhấn nút \"Lưu\" trên trang cá nhân để lưu thông tin tìm kiếm nhanh!" 
+                            else "No saved accounts yet.\nClick \"Save\" on a profile to bookmark them here for quick access!",
+                        fontSize = 12.sp,
+                        color = Color(0xFF71767B),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 24.dp)
+                    )
+                }
+            }
+        } else {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                items(followed) { account ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onSelectAccount(account.username) },
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFF16181C)),
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(1.dp, Color(0xFF2F3336))
+                    ) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            // Close/Delete button on top right
+                            IconButton(
+                                onClick = {
+                                    viewModel.toggleFollowProfile(
+                                        IgProfile(
+                                            id = "",
+                                            username = account.username,
+                                            fullName = account.fullName,
+                                            isPrivate = false,
+                                            profilePicUrl = account.profilePicUrl
+                                        )
+                                    )
+                                },
+                                modifier = Modifier
+                                    .align(Alignment.TopEnd)
+                                    .padding(4.dp)
+                                    .size(24.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Close,
+                                    contentDescription = "Remove Bookmark",
+                                    tint = Color(0xFFEF4444),
+                                    modifier = Modifier.size(14.dp)
+                                )
+                            }
+
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(12.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Box(modifier = Modifier.size(56.dp)) {
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data(account.profilePicUrl)
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "Avatar",
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .clip(CircleShape)
+                                            .border(1.5.dp, Color(0xFF38BDF8), CircleShape)
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(8.dp))
+
+                                Text(
+                                    text = "@${account.username}",
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+
+                                Text(
+                                    text = account.fullName.ifEmpty { "@${account.username}" },
+                                    fontSize = 11.sp,
+                                    color = TextSilver,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    textAlign = TextAlign.Center
+                                )
+
+                                Spacer(modifier = Modifier.height(8.dp))
+
+                                Row(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(Color(0xFF38BDF8).copy(alpha = 0.15f))
+                                        .padding(horizontal = 8.dp, vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Search,
+                                        contentDescription = null,
+                                        tint = Color(0xFF38BDF8),
+                                        modifier = Modifier.size(11.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text(
+                                        text = if (appLanguage == AppLanguage.VI) "Tìm nhanh" else "Quick Find",
+                                        fontSize = 9.sp,
+                                        color = Color(0xFF38BDF8),
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
