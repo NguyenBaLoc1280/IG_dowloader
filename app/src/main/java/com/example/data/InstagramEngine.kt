@@ -2,6 +2,8 @@ package com.example.data
 
 import android.content.ContentValues
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -16,6 +18,7 @@ import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -756,6 +759,98 @@ class InstagramEngine(private val context: Context) {
         return videos.optJSONObject(0)?.optString("url")
     }
 
+    private fun enhanceImageQuality(srcBytes: ByteArray): ByteArray {
+        return try {
+            val options = BitmapFactory.Options().apply {
+                inMutable = true
+            }
+            val src = BitmapFactory.decodeByteArray(srcBytes, 0, srcBytes.size, options) ?: return srcBytes
+            
+            val width = src.width
+            val height = src.height
+            if (width < 100 || height < 100) {
+                src.recycle()
+                return srcBytes
+            }
+            
+            // Standard high-performance 1D pixel array convolution sharpening
+            val pixels = IntArray(width * height)
+            src.getPixels(pixels, 0, width, 0, 0, width, height)
+            
+            val output = IntArray(width * height)
+            
+            // Copy borders
+            System.arraycopy(pixels, 0, output, 0, width)
+            System.arraycopy(pixels, (height - 1) * width, output, (height - 1) * width, width)
+            for (y in 0 until height) {
+                output[y * width] = pixels[y * width]
+                output[y * width + width - 1] = pixels[y * width + width - 1]
+            }
+            
+            // Apply lightweight smart Unsharp/Sharpen convolution kernel
+            // Center weight: 2.2, Adjacent weights: -0.3
+            // Sum of weights = 2.2 - 4 * 0.3 = 1.0 (Preserves overall brightness perfectly!)
+            for (y in 1 until height - 1) {
+                val yOffset = y * width
+                val yPrevOffset = (y - 1) * width
+                val yNextOffset = (y + 1) * width
+                for (x in 1 until width - 1) {
+                    val idx = yOffset + x
+                    val center = pixels[idx]
+                    val left = pixels[idx - 1]
+                    val right = pixels[idx + 1]
+                    val top = pixels[yPrevOffset + x]
+                    val bottom = pixels[yNextOffset + x]
+                    
+                    val rC = (center shr 16) and 0xFF
+                    val gC = (center shr 8) and 0xFF
+                    val bC = center and 0xFF
+                    
+                    val rL = (left shr 16) and 0xFF
+                    val gL = (left shr 8) and 0xFF
+                    val bL = left and 0xFF
+                    
+                    val rR = (right shr 16) and 0xFF
+                    val gR = (right shr 8) and 0xFF
+                    val bR = right and 0xFF
+                    
+                    val rT = (top shr 16) and 0xFF
+                    val gT = (top shr 8) and 0xFF
+                    val bT = top and 0xFF
+                    
+                    val rB = (bottom shr 16) and 0xFF
+                    val gB = (bottom shr 8) and 0xFF
+                    val bB = bottom and 0xFF
+                    
+                    var r = (rC * 2.2f - (rL + rR + rT + rB) * 0.3f).toInt()
+                    var g = (gC * 2.2f - (gL + gR + gT + gB) * 0.3f).toInt()
+                    var b = (bC * 2.2f - (bL + bR + bT + bB) * 0.3f).toInt()
+                    
+                    r = if (r < 0) 0 else if (r > 255) 255 else r
+                    g = if (g < 0) 0 else if (g > 255) 255 else g
+                    b = if (b < 0) 0 else if (b > 255) 255 else b
+                    
+                    output[idx] = (0xFF000000.toInt()) or (r shl 16) or (g shl 8) or b
+                }
+            }
+            
+            val dest = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            dest.setPixels(output, 0, width, 0, 0, width, height)
+            
+            val outStream = ByteArrayOutputStream()
+            // Compress with 100% maximum quality JPEG format to prevent any compression noise!
+            dest.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+            
+            src.recycle()
+            dest.recycle()
+            
+            outStream.toByteArray()
+        } catch (e: Exception) {
+            Log.e("InstagramEngine", "HQ Image Enhancer failed, fallback to original", e)
+            srcBytes
+        }
+    }
+
     /**
      * Downloads file from url and saves it locally inside external public storage
      * organized by Username and current date partition.
@@ -766,6 +861,7 @@ class InstagramEngine(private val context: Context) {
         mediaId: String,
         url: String,
         isVideo: Boolean,
+        hqEnhance: Boolean = true,
         onProgress: (Float) -> Unit
     ): Result<String> = withContext(Dispatchers.IO) {
         try {
@@ -790,6 +886,28 @@ class InstagramEngine(private val context: Context) {
                 val contentLength = body.contentLength()
                 val inputStream = body.byteStream()
 
+                // Buffer the entire stream while tracking progress
+                val outputBuffer = ByteArrayOutputStream()
+                val buffer = ByteArray(8192)
+                var bytesRead: Int
+                var totalRead = 0L
+                while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                    outputBuffer.write(buffer, 0, bytesRead)
+                    totalRead += bytesRead
+                    if (contentLength > 0) {
+                        onProgress(totalRead.toFloat() / contentLength)
+                    }
+                }
+                outputBuffer.flush()
+                val originalBytes = outputBuffer.toByteArray()
+
+                // Apply premium HQ Image sharpness or save original
+                val finalBytes = if (!isVideo && hqEnhance) {
+                    enhanceImageQuality(originalBytes)
+                } else {
+                    originalBytes
+                }
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     // Modern Android: use MediaStore ContentResolver for Downloads target
                     val contentValues = ContentValues().apply {
@@ -808,7 +926,7 @@ class InstagramEngine(private val context: Context) {
 
                     try {
                         resolver.openOutputStream(uri)?.use { outputStream ->
-                            writeWithProgress(inputStream, outputStream, contentLength, onProgress)
+                            outputStream.write(finalBytes)
                         }
 
                         // Complete registration
@@ -832,7 +950,7 @@ class InstagramEngine(private val context: Context) {
                     val outFile = File(outDir, filename)
                     try {
                         FileOutputStream(outFile).use { outputStream ->
-                            writeWithProgress(inputStream, outputStream, contentLength, onProgress)
+                            outputStream.write(finalBytes)
                         }
                         Result.success(outFile.absolutePath)
                     } catch (e: Exception) {

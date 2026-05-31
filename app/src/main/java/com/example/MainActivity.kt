@@ -201,16 +201,54 @@ fun InstagramDownloaderApp(
                         }
                     }
 
-                    // Chevron minimization toggle inside strip
-                    IconButton(
-                        onClick = { isHeaderExpanded = !isHeaderExpanded },
-                        modifier = Modifier.size(24.dp)
+                    // HQ Quality Boost Toggle + Minimize Control Action Group
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = if (isHeaderExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                            contentDescription = if (isHeaderExpanded) "Minimize Profile" else "Expand Profile",
-                            tint = Color.White
-                        )
+                        val hqEnabled by viewModel.isHqEnhanceEnabled.collectAsStateWithLifecycle()
+                        
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(if (hqEnabled) Color(0xFF0EA5E9).copy(alpha = 0.2f) else Color.Transparent)
+                                .border(
+                                    width = 1.dp,
+                                    color = if (hqEnabled) Color(0xFF38BDF8) else Color(0xFF202225),
+                                    shape = RoundedCornerShape(8.dp)
+                                )
+                                .clickable { viewModel.setHqEnhanceEnabled(!hqEnabled) }
+                                .padding(horizontal = 6.dp, vertical = 3.dp)
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Stars,
+                                    contentDescription = "HQ Enhancer",
+                                    tint = if (hqEnabled) Color(0xFF38BDF8) else Color(255, 255, 255, 120),
+                                    modifier = Modifier.size(10.dp)
+                                )
+                                Text(
+                                    text = if (appLanguage == AppLanguage.VI) "Bộ tăng cường HQ" else "HQ Boost",
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = if (hqEnabled) Color(0xFFF1F5F9) else Color(0xFF71767B)
+                                )
+                            }
+                        }
+
+                        IconButton(
+                            onClick = { isHeaderExpanded = !isHeaderExpanded },
+                            modifier = Modifier.size(24.dp)
+                        ) {
+                            Icon(
+                                imageVector = if (isHeaderExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                                contentDescription = if (isHeaderExpanded) "Minimize Profile" else "Expand Profile",
+                                tint = Color.White
+                            )
+                        }
                     }
                 }
 

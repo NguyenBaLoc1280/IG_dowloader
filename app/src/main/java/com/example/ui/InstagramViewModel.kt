@@ -117,6 +117,14 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
     private val _downloadStatusMessage = MutableStateFlow<String?>(null)
     val downloadStatusMessage: StateFlow<String?> = _downloadStatusMessage.asStateFlow()
 
+    private val _isHqEnhanceEnabled = MutableStateFlow(true)
+    val isHqEnhanceEnabled: StateFlow<Boolean> = _isHqEnhanceEnabled.asStateFlow()
+
+    fun setHqEnhanceEnabled(enabled: Boolean) {
+        _isHqEnhanceEnabled.value = enabled
+        sharedPrefs.edit().putBoolean("is_hq_enhance_enabled", enabled).apply()
+    }
+
     // History of Downloads from database Flow
     val downloadHistory: StateFlow<List<DownloadRecord>> = dao.getAllDownloads()
         .stateIn(
@@ -132,6 +140,8 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
     private fun loadSession() {
         val langCode = sharedPrefs.getString("app_language", AppLanguage.EN.code)
         _appLanguage.value = AppLanguage.values().find { it.code == langCode } ?: AppLanguage.EN
+
+        _isHqEnhanceEnabled.value = sharedPrefs.getBoolean("is_hq_enhance_enabled", true)
 
         val cookies = sharedPrefs.getString("session_cookies", null)
         val username = sharedPrefs.getString("logged_in_username", null)
@@ -503,6 +513,7 @@ class InstagramViewModel(application: Application) : AndroidViewModel(applicatio
                     mediaId = task.id,
                     url = task.url,
                     isVideo = task.isVideo,
+                    hqEnhance = _isHqEnhanceEnabled.value,
                     onProgress = { progress ->
                         progressMap[task.id] = progress
                         _downloadProgress.value = progressMap.toMap()
