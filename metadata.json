@@ -1,0 +1,6 @@
+{
+  "name": "IG Downloader",
+  "description": "Download Instagram stories and posts from public or private accounts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
