@@ -1,0 +1,237 @@
+# HƯỚNG DẪN SỬ DỤNG CHI TIẾT / USER MANUAL / 利用ガイド / 用户使用手册 / دليل المستخدم
+========================================================================================
+
+Mục lục / Table of Contents:
+1. TIẾNG VIỆT (Vietnamese)
+2. ENGLISH (English)
+3. 日本語 (Japanese)
+4. 中文 (Chinese)
+5. العربية (Arabic)
+
+========================================================================================
+1. TIẾNG VIỆT (Vietnamese User Manual)
+========================================================================================
+Chào mừng bạn đến với Trình tải IG Vault (IG Vault Downloader)! Đây là dòng sản phẩm tối ưu giúp bạn tìm kiếm, theo dõi cập nhật tự động và tải xuống các nội dung từ mạng xã hội Instagram như Bài viết (Posts), Thước phim (Reels), Ảnh quay vòng (Carousels), Tin nhanh (Stories), và Tin nổi bật (Highlights) một cách nhanh chóng, an toàn và bảo mật hoàn hảo.
+
+Dưới đây là cẩm nang hướng dẫn sử dụng chi tiết các phân hệ tính năng có sẵn trong ứng dụng:
+
+1.1. Tìm kiếm và Tra cứu Hồ sơ (Profile)
+----------------------------------------
+- Ở màn hình chính, nhấp vào thanh tìm kiếm "Tìm tên người dùng Instagram..." ở đầu giao diện.
+- Nhập chính xác tên người dùng (username) mà bạn muốn kiểm tra (Ví dụ: cristiano, taylorswift...).
+- Nhấn phím Tìm kiếm trên bàn phím. Toàn bộ thông số người dùng (bao gồm ảnh đại diện, số lượng bài đăng, số người theo dõi, số tài khoản đang theo dõi cùng nhãn Đóng/Mở Hồ sơ Công khai hay Riêng tư) sẽ được tải về.
+
+1.2. Thao tác trên các Tab Tính năng
+-----------------------------------
+Ứng dụng tổ chức giao diện thông minh thông qua 5 Tab điều hướng nằm ngang cạnh dưới màn hình:
+
+a) Bài viết (Posts):
+- Hiển thị đầy đủ tất cả bài đăng feed truyền thống, các thước phim Reels và các ảnh album dạng vuốt slide (Carousels) của người được tìm kiếm.
+- Bạn có thể chạm chọn trực tiếp lên từng mục ảnh/video đơn lẻ để đưa vào hàng chờ lưu trữ hoặc nhấn nút "Chọn tất cả (Select All)" ở góc điều khiển.
+- Nhấn chọn "Bỏ chọn (Clear)" nếu muốn cài đặt lại hàng chờ từ đầu.
+- Cuối cùng, chạm nút "Tải xuống các mục đã chọn (Download Selected)" để chuyển giao tệp dữ liệu vào lưu trữ ngoại tuyến của máy.
+
+b) Tin (Stories):
+- Tab hiển thị tất cả các tin nhanh của tài khoản mục tiêu được đăng tải trong vòng 24 giờ qua.
+- **Chú ý quan trọng:** Instagram thiết lập tường quét chặn ẩn danh rất nghiêm ngặt đối với nội dung Stories ngắn hạn. Để giải quyết và đồng bộ được luồng Tin trực tiếp, vui lòng nhấp vào nút "Đăng nhập Instagram" để kết nối thông tin an toàn qua hộp thoại kiểm nghiệm bảo mật chuẩn xác chính chủ của ứng dụng.
+
+c) Nổi bật (Highlights):
+- Hiển thị khay tròn tập hợp toàn bộ các album "Tin nổi bật" đã được ghim lưu niên trên đầu trang cá nhân Instagram của mục tiêu.
+- Chọn một thư mục nổi bật bất kỳ để thiết lập lấy về danh sách các tệp tin lưu trữ bên trong.
+- Tính năng này cũng yêu cầu đăng nhập tài khoản cá nhân Instagram để xác thực quét nội dung tương tự tương tác tại tab Tin.
+
+d) Khung Đã lưu / Theo dõi tự động (Saved):
+- Tại khung hiển thị phần tóm tắt hồ sơ mục tiêu, nhấp chọn "Đánh dấu (Bookmark)" để đưa người đó vào hòm thư giám sát tin tức đặc quyền.
+- Khi một phiên hoạt động được đăng ký đăng nhập khởi chạy, ứng dụng sẽ thực thi phân giải cập nhật bài viết mới định kỳ từ các tài khoản bạn đã đánh dấu. Nếu phát hiện tệp bài đăng mới từ họ, hệ thông sẽ bắn trực tiếp thông báo hệ thống tự động lên màn hình điện thoại của bạn.
+- Bạn có thể nhấp chọn "Quét cập nhật (Scan Updates)" để chủ động kích hoạt máy quét thủ công bất cứ lúc nào.
+
+e) Thư viện Offline (Library):
+- Nơi lưu trữ đầy đủ toàn bộ phương tiện hình ảnh, tệp tin video hay reels mà bạn đã tiến hành tải xuống. Các tài nguyên này được ghi chép và định dạng để dễ dàng phát và xem lại ở trạng thái ngoại tuyến (Offline) ngay cả khi điện thoại không có kết nối di động hay Wi-Fi.
+
+1.3. Cơ chế Chế độ Khách (Guest) và Đăng nhập (Sign In)
+-------------------------------------------------------
+- Chế độ khách (Guest Mode): Giới hạn truy cập mặc định cho phép người dùng lướt và tải xuống tệp bài viết đơn giản từ tài khoản công khai.
+- Chế độ đăng nhập (Logged-in Mode): Giải tỏa toàn vẹn sức mạnh bằng cách liên kết đăng nhập Instagram. Nhờ đó, máy quét có thể thu thập tệp Tin (Stories), Tin nổi bật (Highlights) cùng bộ máy tự động phát hiện bài viết mới hoạt động hoàn toàn tự động.
+
+
+========================================================================================
+2. ENGLISH (English User Manual)
+========================================================================================
+Welcome to IG Vault Downloader! This premium utility is designed to help you easily locate, auto-monitor, and download media assets from Instagram, including Posts, short Reels, Carousel albums, live Stories, and Pinned Highlights safely and with bulletproof security.
+
+Below is the comprehensive operational handbook explaining all integrated application modules:
+
+2.1. Locating Profile Targets
+-----------------------------
+- Locate the primary search field labelled "Search Instagram username..." situated at the top of the screen.
+- Key in the exact Instagram username of the profile you wish to crawl (e.g. cristiano, taylorswift).
+- Press the search/submit button on your localized keypad. Detailed parameters (avatar photo, total posts counter, follower & following counts, together with Public/Private security badges) will be instantly displayed.
+
+2.2. Master Navigation & Feature Tabs
+-------------------------------------
+The user interface is segmented into 5 highly accessible tab routes aligned at the bottom:
+
+a) Posts Tab:
+- Renders all normal timeline images, public short videos, and multi-slide swipeable card carousels.
+- Tap individual items in the grid to add them to the selection draft queue, or press "Select All" to choose every loaded post in a single click.
+- Tap "Clear" to reset the checkout layout.
+- Click on "Download Selected" to execute multi-threaded download pipelines right into local device memory.
+
+b) Stories Tab:
+- Reveals fleeting story content shared by the target user within the preceding 24 hours.
+- **Critical Notice:** Instagram restricts anonymous user connections on temporary story feeds. To enable story scanning, select "Login to Instagram" within our safe, sandboxed viewer window. Once verified, active stories will parse instantly.
+
+c) Highlights Tab:
+- Illustrates a horizontal tray carrying all archived "Highlight folders" from the target account.
+- Tap any Highlight circular preview to launch and pull down individual sub-stories contained inside that folder.
+- Accessing highlights demands an active Instagram authenticated session, similar to the Stories tab conditions.
+
+d) Saved & Auto-Tracking Tab (Saved):
+- Under the profile header overview, click the "Bookmark" button to add the target handle to your automated watchlist.
+- If you run the app during an authenticated session, the system automatically checks your watchlist users on start. If any target publishes a new item, a native status bar notification is broadcast immediately.
+- Use "Scan Updates" to manually poll updates for all bookmarks concurrently.
+
+e) Library Tab:
+- Acts as your private offline archive hosting all successful downloads. Review downloaded items, videos, and multi-photo slide files anytime without active cellular bandwidth or Wi-Fi.
+
+2.3. Guest Mode vs. Authenticated Session
+-----------------------------------------
+- Guest Mode: Allowed by default. Restricts lookup outputs to standard feed posts published under public profiles only.
+- Authenticated Login: Authorizes the local secure parser to request Temporary Stories, Pinned Highlights, and run background update checks without errors.
+
+
+========================================================================================
+3. 日本語 (Japanese User Manual / 利用ガイド)
+========================================================================================
+「IG Vault保存機 (IG Vault Downloader)」をご利用いただき、誠にありがとうございます。本アプリは、Instagramの通常投稿（Posts）、ショート動画リール（Reels）、カルーセル複数投稿（Carousels）、最新の24時間ストーリー（Stories）、さらにプロフィールトップに保管されているハイライト（Highlights）を、簡単かつ極めて安全に検索・追跡・オフライン保存できる高性能多用途ダウンローダーです。
+
+以下に各機能の使い方、ならびに操作手順を詳細に解説します。
+
+3.1. プロフィールの検索
+-----------------------
+- 画面上部にある「ユーザー名を入力...」と表示された検索用入力バーをタップします。
+- 閲覧したい、または投稿を保存したいInstagramアカウントの「正確なユーザー名 (ID)」（例：cristiano や taylorswift）を入力します。
+- キーボードに表示される検索ボタンを押すと、対象ユーザーの基本プロフィール情報（アイコン写真、投稿総数、フォロワー数、フォロー数、およびアカウントの「公開/非公開」状態）が速やかに読み込まれます。
+
+3.2. 各タブ機能の説明と使い方
+-----------------------------
+画面最下部位置にある5種類の専用ナビゲーションタブを使って切り替えを行います：
+
+a) 「投稿 (Posts)」タブ：
+- 対象ユーザーがタイムライン上に投稿した一般写真、一般動画、リール動画、および横スワイプ用のカルーセル画像を一覧形式で展開します。
+- 一覧表示から、保存したい個別のメディアパネルをタップすることで選択状態のキューに追加できます。また、右上の「すべて選択 (Select All)」ボタンを利用して、一括選択も可能です。
+- リセットしたい時は「クリア (Clear)」を押し、選択が完了したら「選択分を保存 (Download Selected)」をタップして、ローカルデバイスフォルダに安全にオフライン保存を実行します。
+
+b) 「ストーリー (Stories)」タブ：
+- 直近24時間以内に更新されたアクティブストーリーを即座に検出・表示します。
+- **重要事項：** Instagramの仕様上、ログインを伴わない匿名の外部閲覧アクセスに対して一時的なストーリーの表示は全面的に規制されています。ストーリーの取得・検知を行うには、画面中央またはログイン画面から安全な内蔵ビューア経由でお持ちのInstagramのアカウントへサインインしてください。
+
+c) 「ハイライト (Highlights)」タブ：
+- プロフィールトップにピン留めされたハイライトのフォルダ群を横スクロールできる「ハイライトトレイ」として配置しています。
+- 各ハイライトフォルダのアイコンをタップすると、そのフォルダー内に過去保存されたピン留めストーリーメディアが瞬時に展開・読み込まれます。
+- ストーリーと同様に、データにアクセスして展開、取得するにはInstagramへの認証ログインが必要です。
+
+d) 「フォロー中 / 自動検知 (Saved)」タブ：
+- 検索したターゲットプロフィールのヘッダー配下にある「自動検知・フォロー (Bookmark)」ボタンを押すとお気に入り監視リストに登録されます。
+- ログインセッションを確立した状態でアプリを起動すると、リストに登録されたアカウントに変更・新投稿がないかを自動検知。新着更新を発見した場合、スマートフォンのシステム通知領域から即時プッシュ通知でお知らせします。
+- リスト一覧において「更新を確認 (Scan Updates)」ボタンを押すと、お気に入り全員の新着の確認をマニュアルで再走査できます。
+
+e) 「ライブラリ (Library)」タブ：
+- これまでにダウンロード完了した画像や動画をオフラインで一括閲覧・整理できる「クローズドストレージ」です。外出先やモバイル回線・Wi-Fi接続の無い完全なオフライン状態でも、クリアに再生できます。
+
+3.3. ログインとゲストモードの違い
+---------------------------------
+- ゲストモード（非ログイン状態）：標準の基本動作です。一般公開プロフィールから標準投稿データのみを一覧抽出、ダウンロードが可能です。
+- 認証ログインモード：安全にログイン認証を完了することで、ストーリー機能やピン留めハイライト、自動検出アラートが完全に稼働可能な状態に引き上がります。
+
+
+========================================================================================
+4. 中文 (Chinese User Manual / 用户使用手册)
+========================================================================================
+欢迎使用 IG Vault极客下载！这是一款高效搜寻、后台监视并离线保存Instagram公开帖子（Posts）、快卷视频（Reels）、多图卡片轮播（Carousels）、瞬时故事（Stories）和精选合辑（Highlights）的专业级多合一媒体下载工具。
+
+以下为您梳理的详细功能图谱和细致的使用说明：
+
+4.1. 目标账号检索
+-----------------
+- 单击界面顶部的输入框 “请输入Instagram用户名...”。
+- 准确输入您需要探查或下载的 Instagram 用户名（例如：cristiano、taylorswift 等）。
+- 敲击软键盘的搜索图标。片刻后，包含目标账号头像、帖子量、粉丝量、关注数以及账号隐私标识（公开/私密）的信息卡片将在下方呈现。
+
+4.2. 掌握五大功能卡片及导航
+----------------------------
+位于屏幕底部的精简浮动菜单包含五大服务模块，提供高聚合操作支持：
+
+a) 帖子卡片 (Posts)：
+- 完整拉取目标账号中所有的常规发帖、短视频Reels以及支持左右滑动的多图画册（Carousel）。
+- 您可以逐一点击列表里的图片进入批量等待保存队列，也可以点击底部操作区的“全选 (Select All)”全盘点亮已加载的数据。
+- 如需重新编配，可使用“清除 (Clear)”键清空当前选择。
+- 点击“本地保存选中 (Download Selected)”，多线程高压缩流将立刻把数据存入您的离线缓存层。
+
+b) 故事快照 (Stories)：
+- 查看并在24小时倒计时内离线保存博主上传的所有瞬态公开动态故事。
+- **深度提示：** 本系统使用专有安全模块接入。由于官方对匿名连接执行了非常高频的安全风控阻断，您需要点击进入“登录 Instagram”流程，通过内置安全机制提交您的账号完成关联。之后便能解锁完整的故事采集链条。
+
+c) 精选合辑 (Highlights)：
+- 本地呈现博主个人主页固顶精制而成的合辑文件夹卡片。
+- 在横向滚动的“精选分类”中选取任一合辑卡片，将可以一并拉取多年前分类在里面的历史瞬间。
+- 同样，获取并解密精选归档对安全登录会话有着强依赖，需要您在当前运行期完成安全登录。
+
+d) 监视关注卡片 (Saved)：
+- 在已被搜寻账户的名片控制区内，点击“开启更新监视 (Bookmark)”即可将其锁入您的私有后台追踪栏中。
+- 开启登录会话的状态下，一旦您打开此软件，本系统便会启动后台扫描算法探查名单中博主是否有最新发帖。一有新发文出现，系统状态栏会即刻高亮推送您的专属提醒通知。
+- 您可在导航内轻踩“扫频检索 (Scan Updates)”来手动更新对全名单的雷达检索状态。
+
+e) 离线历史库 (Library)：
+- 本地历史馆，有序承载所有转移归档进您本机的图影。在无法连接移动蜂窝数据或者户外无无线网络的环境下，依旧能够正常阅读和播放已有内容。
+
+4.3. 游览身份机制：访客 vs 健全登录
+------------------------------------
+- 访客保护模式（未登录）：只支持拉取公开用户的常规个人主页 feed 数据以及对应的单项下载。
+- 安全授权会话（已登录）：全面解除对故事快报、历史精选夹提取、自动高感知抓取雷达的性能锁定。
+
+
+========================================================================================
+5. العربية (Arabic User Manual / دليل المستخدم)
+========================================================================================
+مرحباً بك في منزل IG Vault (IG Vault Downloader)! الأداة الاحترافية المتميزة لمساعدتك على البحث، والمراقبة التلقائية، وتنزيل وسائط إنستغرام بأمان وسلاسة تامة، بما في ذلك المنشورات (Posts)، ومقاطع الريلز (Reels)، وألبومات الكاروسيل (Carousels)، والقصص النشطة (Stories)، والقصص المثبتة البارزة (Highlights) مع حماية خصوصية ومستويات أمان متكاملة.
+
+إليك ثمار الدليل التشغيلي المفصّل لشرح جميع الوحدات المدمجة داخل التطبيق:
+
+5.1. البحث عن الملفات الشخصية المستهدفة
+---------------------------------------
+- ابحث عن حقل إدخال النص في أعلى الواجهة والمعنون بـ "ابحث عن اسم المستخدم في إنستغرام...".
+- أدخل الاسم الدقيق للملف الشخصي (مثال: cristiano، taylorswift).
+- اضغط على زر "البحث" على لوحة المفاتيح الخاصة بك. سيقوم التطبيق بسحب وعرض تفاصيل الحساب بشكل كامل (الصورة الشخصية، وعداد المنشورات الإجمالية، وعدد المتابعين والمتابعون، مصحوبة بشارات الحساب العام أو الخاص).
+
+5.2. إتقان علامات تبويب التنقل الرئيسية
+---------------------------------------
+تم تصميم واجهة المستخدم بأناقة عبر 5 علامات تبويب تنقل أفقية في الجزء السفلي لتسهيل الاستخدام:
+
+أ) تبويب المنشورات (Posts):
+- يعرض كامل منشورات الخلاصة العادية، ومقاطع الفيديو القصيرة (Reels)، بالإضافة إلى ألبومات الصور متعددة الصفحات (Carousels) للمستخدم المستهدف.
+- يمكنك النقر مباشرة على أي منشور في الشبكة لتحديده وإضافته إلى قائمة التنزيل المؤقتة، أو الضغط على زر "تحديد الكل (Select All)".
+- انقر فوق "إلغاء التحديد (Clear)" لإعادة ضبط واجهة التنزيل والبدء من جديد.
+- اضغط على "تنزيل المحدد (Download Selected)" لتفعيل عمليات التنزيل المتعددة وحفظها مباشرة في الذاكرة المحلية لجهازك.
+
+ب) تبويب القصص (Stories):
+- يكشف النقاب عن القصص المؤقتة المنشورة من قبل الحساب المستهدف خلال الـ 24 ساعة الماضية.
+- **ملاحظة بالغة الأهمية:** يمنع إنستغرام أي عميل مجهول الهوية من الوصول للقصص النشطة. لتتمكن من فحص القصص، اضغط على زر "تسجيل الدخول في إنستغرام" للتحقق الآمن عبر نافذتنا البرمجية المعزولة، مما يفعل محرك كشط القصص تلقائياً.
+
+ج) تبويب أبرز القصص (Highlights):
+- يستدعي ويعرض شريطاً أفقياً يحتوي على جميع مجلدات "القصص البارزة والمثبتة" في أعلى الحساب المستهدف.
+- اختر مجلداً بارزاً محدداً بالنقر عليه لتحميل كافة القصص الفرعية الأرشيفية المسجلة مسبقاً داخل هذا المجلد.
+- يتطلب سحب محتويات الألبومات البارزة وجود جلسة تسجيل دخول نشطة على إنستغرام، تماماً كشروط تبويب القصص.
+
+د) علامة تبويب التتبع والمراقبة الآلية (Saved):
+- أسفل ملخص الملف الشخصي، انقر فوق زر "تتبع التحديثات (Bookmark)" لوضعه على رادار Watchlist للتتبع الذكي.
+- عندما تفتح التطبيق مع توفر جلسة دخول نشطة، فسيقوم بمراقبة قائمة حساباتك تلقائياً وبشكل دوري. إذا تم رصد أي منشور جديد لشخص في القائمة، فسيتم بث تنبيه بريد فوري منبثق بشريط الحالة على شاشة جهازك.
+- يمكنك النقر فوق "فحص التحديثات (Scan Updates)" لتشغيل فحص يدوي لقائمة المراقبة في أي وقت تريده.
+
+هـ) تبويب المكتبة المحلية (Library):
+- يمثل الأرشيف المحلي الخاص لتخزين ومراجعة جميع التنزيلات الناجحة. يمكنك الآن تشغيل واستعراض الصور ومقاطع الفيديو الدائرية بأي وقت دون استهلاك لحزم البيانات ومن دون اتصال في الشبكة.
+
+5.3. شرح آلية وضع الضيف مقارنة بجلسة الدخول المؤكدة
+---------------------------------------------
+- وضع الضيف (Guest): الوضع النشط افتراضياً عند فتح التطبيق، ويقتصر على البحث والتنزيل الفردي لمنشورات الخلاصة العادية من الحسابات العامة فقط.
+- وضع تسجيل الدخول المؤكد (Logged-in): يطلق العنان للقوة الكاملة للتطبيق من خلال تفعيل عملية مسح القصص اليومية، وقراءة الألبومات البارزة، ونظام المراقبة البرمجية المبتكر.

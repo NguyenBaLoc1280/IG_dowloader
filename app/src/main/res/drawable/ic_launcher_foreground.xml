@@ -4,43 +4,50 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     
-    <!-- Instagram camera outer rounded card (White) -->
-    <!-- Positioned elegantly centered at 54, 54 -->
-    <path
-        android:pathData="M 40,28 L 68,28 A 12,12 0 0,1 80,40 L 80,68 A 12,12 0 0,1 68,80 L 40,80 A 12,12 0 0,1 28,68 L 28,40 A 12,12 0 0,1 40,28 Z"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:fillColor="#00000000"/>
-
-    <!-- Lens circle in the center, radius extended to 15 for optimal arrow nesting -->
-    <path
-        android:pathData="M 54,39 A 15,15 0 1,1 53.9,39 Z"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"
-        android:fillColor="#00000000"/>
-
-    <!-- Instagram Flash Dot (top-right of camera) -->
-    <path
-        android:pathData="M 68,37 A 3,3 0 1,1 67.9,37 Z"
-        android:fillColor="#FFFFFF"/>
-
-    <!-- Downward download arrow nesting perfectly inside the 15dp radius lens circle -->
-    <!-- Shaft: vertically centered at x=54, Y-span fits perfectly within lens boundaries (39 to 69) -->
-    <path
-        android:pathData="M 54,44 L 54,62"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"/>
+    <group
+        android:pivotX="54.0"
+        android:pivotY="54.0"
+        android:scaleX="0.6667"
+        android:scaleY="0.6667">
         
-    <!-- Arrowhead pointing down, centered and proportioned to sit completely inside the lens circle -->
-    <path
-        android:pathData="M 47,55 L 54,62 L 61,55"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:fillColor="#00000000"/>
+        <!-- Instagram camera outer rounded card (White) -->
+        <!-- Positioned elegantly centered at 54, 54 -->
+        <path
+            android:pathData="M 40,28 L 68,28 A 12,12 0 0,1 80,40 L 80,68 A 12,12 0 0,1 68,80 L 40,80 A 12,12 0 0,1 28,68 L 28,40 A 12,12 0 0,1 40,28 Z"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="4.5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:fillColor="#00000000"/>
+
+        <!-- Lens circle in the center, radius extended to 15 for optimal arrow nesting -->
+        <path
+            android:pathData="M 54,39 A 15,15 0 1,1 53.9,39 Z"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000"/>
+
+        <!-- Instagram Flash Dot (top-right of camera) -->
+        <path
+            android:pathData="M 68,37 A 3,3 0 1,1 67.9,37 Z"
+            android:fillColor="#FFFFFF"/>
+
+        <!-- Downward download arrow nesting perfectly inside the 15dp radius lens circle -->
+        <!-- Shaft: vertically centered at x=54, Y-span fits perfectly within lens boundaries (39 to 69) -->
+        <path
+            android:pathData="M 54,44 L 54,62"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"/>
+            
+        <!-- Arrowhead pointing down, centered and proportioned to sit completely inside the lens circle -->
+        <path
+            android:pathData="M 47,55 L 54,62 L 61,55"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:fillColor="#00000000"/>
+    </group>
 </vector>
